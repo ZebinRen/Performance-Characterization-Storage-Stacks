@@ -1,5 +1,10 @@
 __pycache__
-results/*
-results_global/*
-results_local/*
+results
+results_global
+results_local
+perf_graph
+perf_list
+perf_output
 *pdf
+flamegraph
+fio

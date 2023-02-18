@@ -64,6 +64,7 @@ Run the script and plot:
 
 ```bash
 cd 2-iops_d1_qd_1
+mkdir results
 sudo ./run.sh
 python3 plot.py
 ```
@@ -77,6 +78,7 @@ Run the script and plot:
 
 ```bash
 cd 2-iops_d1_qd_1
+mkdir fio perf_graph perf_list perf_output
 sudo ./run.sh
 python3 plot.py
 ```
@@ -114,6 +116,7 @@ Run the script and plot:
 
 ```bash
 cd 4-micro_arch_qd1
+mkdir results_global results_local
 sudo ./run.sh
 python3 plot.py
 ```
@@ -129,27 +132,13 @@ Run the script and plot:
 
 ```bash
 sudo ./run.sh
+mkdir results
 python3 plot.py
 ```
 
 ## Figure 5-c
 
 see figure 3
-
-## Figure 6
-
-Before running the script:
-
-* Set the 'SPDK_SETUP_PATH' environment variable.
-* Disable the CPU core that are not in the same socket with the device
-
-Run the script and plot:
-
-```bash
-cd
-sudo ./run.sh
-python3 plot.py
-```
 
 ## Figure 6
 
@@ -164,7 +153,23 @@ Before running the script:
 Run the script and plot:
 
 ```bash
-cd
+cd 7-multi_thread
+sudo ./run.sh
+mkdir results
+python3 plot.py
+```
+
+## Figure 8
+
+Before running the script:
+
+* Set the 'SPDK_SETUP_PATH' environment variable.
+
+Run the script and plot:
+
+```bash
+cd 8-scheduler_multi_thread
+mkdir results
 sudo ./run.sh
 python3 plot.py
 ```
