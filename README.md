@@ -1,5 +1,9 @@
 # Instructions
 
+## IMPORTANT
+
+There are predefined devices in the fio configuration files. PLEASE REPLACE THEM WITH YOUR OWN DEVICE.
+
 ## Environment
 
 ### Install fio
@@ -36,18 +40,131 @@ sudo scripts/setup.sh reset
 
 NOTE: Please add fio to $PATH
 
+### Prepare
+
+Fully write the devices 10 times before the experiment
+```bash
+cd write_device
+sudo ./run.sh
+```
+
+### NOTE
+
+* Set the 'SPDK_FIO_PLUGIN' and 'SPDK_SETUP_PATH' before run the script
+* Fill your own devices in the fio configurations file before running.
+
 ## Figure 2
 
-### Figure 2-a Random 4K read, single CPU, QD=1
+Before running the script:
 
-### Figure 2-b Instructions breakdown, single CPU, QD=1
+* Set the 'SPDK_SETUP_PATH' environment variable.
+* Disable the CPU core that are not in the same socket with the device
+
+Run the script and plot:
+
+```bash
+cd 2-iops_d1_qd_1
+sudo ./run.sh
+python3 plot.py
+```
 
 ## Figure 3
 
+* Set the 'SPDK_SETUP_PATH' environment variable.
+* Disable the CPU core that are not in the same socket with the device
+
+Run the script and plot:
+
+```bash
+cd 2-iops_d1_qd_1
+sudo ./run.sh
+python3 plot.py
+```
+
+### For spdk
+
+* Parse the perf file with srcline(set your vmlinux path):
+
+```bash
+perf report --vmlinux $VMLINUX -n -m --stdio --full-source-path --source -s symbol,srcline -i perf_output/spdk_fio.perf.out >> spdk_srcline.txt;
+
+```
+
+* Delete all the lines that does not contain the actual data
+* Get the number of instructions and instructions taken by SPDK
+
+```bash
+# all
+cat spdk_srcline.txt | tr -s ' ' | cut -d ' ' -f 3 | awk '{ sum += $1 } END { print sum }'
+# spdk
+grep $YOUR_SPDK_PATH spdk_srcline.txt | tr -s ' ' | cut -d ' ' -f 3 | awk '{ sum += $1 } END { print sum }'
+```
+
+* fill the overhead of spdk and fio in plot.py:112
+
+
 ## Figure 4
 
-## Figure 5
+Before running the script:
+
+* Set up the 'SPDK_FIO_PLUGIN', 'SPDK_SETUP_PATH'
+* Disable the CPU core that are not in the same socket with the device
+
+Run the script and plot:
+
+```bash
+cd 4-micro_arch_qd1
+sudo ./run.sh
+python3 plot.py
+```
+
+## Figure 5-a-b
+
+Before running the script:
+
+* Set the 'SPDK_SETUP_PATH' environment variable.
+* Disable the CPU core that are not in the same socket with the device
+
+Run the script and plot:
+
+```bash
+sudo ./run.sh
+python3 plot.py
+```
+
+## Figure 5-c
+
+see figure 3
 
 ## Figure 6
 
+Before running the script:
+
+* Set the 'SPDK_SETUP_PATH' environment variable.
+* Disable the CPU core that are not in the same socket with the device
+
+Run the script and plot:
+
+```bash
+cd
+sudo ./run.sh
+python3 plot.py
+```
+
+## Figure 6
+
+see figure 4
+
 ## Figure 7
+
+Before running the script:
+
+* Set the 'SPDK_SETUP_PATH', 'SPDK_FIO_PLUGIN' environment variable.
+
+Run the script and plot:
+
+```bash
+cd
+sudo ./run.sh
+python3 plot.py
+```

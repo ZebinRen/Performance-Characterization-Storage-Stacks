@@ -4,8 +4,8 @@
 SPDK_FIO_PLUGIN=
 SPDK_SETUP_PATH=
 
-FIO_RUN_TIME=5
-FIO_RAMP_TIME=3
+FIO_RUN_TIME=120
+FIO_RAMP_TIME=20
 
 declare -a engine=("aio" "iou" "iou_s" "iou_c")
 declare -a qd=("1" "2" "4" "8" "16" "32" "64" "128")

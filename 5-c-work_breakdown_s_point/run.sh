@@ -4,10 +4,10 @@
 VMLINUX=
 SPDK_FIO_PLUGIN=
 SPDK_SETUP_PATH=
-FLAMEGRAPH=/mnt/sdb/zebin/stor_bench/iouring_tests/flame_graph.sh
+FLAMEGRAPH=
 
-FIO_RUN_TIME=30
-FIO_RAMP_TIME=5
+FIO_RUN_TIME=120
+FIO_RAMP_TIME=20
 
 FIO_RES='./fio'
 PERF_RES='./perf_output'

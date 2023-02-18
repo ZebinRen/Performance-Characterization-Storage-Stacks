@@ -1,11 +1,11 @@
 #! /bin/bash
-FIO_RUN_TIME=10
-FIO_RAMP_TIME=5
+FIO_RUN_TIME=120
+FIO_RAMP_TIME=20
 
 SPDK_FIO_PLUGIN=
 SPDK_SETUP_PATH=
 
-declare -a engine=("aio" "iou" "iou_s" "iou_c")
+declare -a engine=("aio" "iou" "iou_c" "iou_s")
 declare -a num_threads_socket1=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 declare -a num_threads_socket2=("11" "12" "13" "14" "15" "16" "17" "18" "19" "20")
 
@@ -32,6 +32,27 @@ do
     done
 done
 
+declare -a num_threads=("1" "2" "3" "4" "5")
+
+chcpu -d 1-9;
+
+e='iou_s'
+
+for t in "${num_threads[@]}"
+do
+FIO_RUN_TIME=$FIO_RUN_TIME FIO_RAMP_TIME=$FIO_RAMP_TIME fio ${e}.conf --ioscheduler=${s} --numjobs=${t} --thread=1 --output-format=json -o $RESULT/${e}_t_${t}.txt;
+done
+
+
+declare -a num_threads=("6" "7" "8" "9" "10")
+
+chcpu -e 1-9;
+
+for t in "${num_threads[@]}"
+do
+FIO_RUN_TIME=$FIO_RUN_TIME FIO_RAMP_TIME=$FIO_RAMP_TIME fio ${e}.conf --ioscheduler=${s} --numjobs=${t} --thread=1 --output-format=json -o $RESULT/${e}_t_${t}.txt;
+done
+
 
 $SPDK_SETUP_PATH;
 
@@ -51,3 +72,5 @@ numactl -C $((20-${t}))-19 env FIO_RUN_TIME=$FIO_RUN_TIME FIO_RAMP_TIME=$FIO_RAM
 done
 
 $SPDK_SETUP_PATH reset;
+
+
