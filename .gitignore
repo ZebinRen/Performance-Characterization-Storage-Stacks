@@ -1,3 +1,5 @@
 __pycache__
 results/*
+results_global/*
+results_local/*
 *pdf
