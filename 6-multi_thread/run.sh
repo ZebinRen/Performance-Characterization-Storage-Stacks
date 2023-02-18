@@ -2,8 +2,8 @@
 FIO_RUN_TIME=10
 FIO_RAMP_TIME=5
 
-SPDK_FIO_PLUGIN='/mnt/sdb/zebin/local/spdk/build/fio/spdk_nvme'
-SPDK_SETUP_PATH='/mnt/sdb/zebin/local/spdk/scripts/setup.sh'
+SPDK_FIO_PLUGIN=
+SPDK_SETUP_PATH=
 
 declare -a engine=("aio" "iou" "iou_s" "iou_c")
 declare -a num_threads_socket1=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
