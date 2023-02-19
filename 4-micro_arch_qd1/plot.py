@@ -165,7 +165,7 @@ def read_data(engines, dir, inst_sample_length, cs_sample_length,
 
 global_dir = './results_global'
 local_dir = './results_local'
-engines = ['aio', 'iou', 'iou_c', 'iou_s', 'spdk_fio']
+engines = ['psync', 'aio', 'iou', 'iou_c', 'iou_s', 'spdk_fio']
 inst_sample_length = 5
 cs_sample_length = 5
 num_perf_files = 10
@@ -187,7 +187,7 @@ datalabel_va = 'bottom'  #'bottom'
 def draw_inst_io(system_wide, process_specific, system_wide_std,
                  process_specific_std, fig_save_path):
     group_list = ['system_wide', 'process_specific']
-    x_ticks = ['aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
+    x_ticks = ['psync', 'aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
     value = {'system_wide': system_wide, 'process_specific': process_specific}
     std_dev = {
         'system_wide': system_wide_std,
@@ -265,7 +265,7 @@ def draw_inst_io(system_wide, process_specific, system_wide_std,
 def draw_cache_miss(system_wide, process_specific, system_wide_std,
                     process_specific_std, fig_save_path):
     group_list = ['system_wide', 'process_specific']
-    x_ticks = ['aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
+    x_ticks = ['psync', 'aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
     value = {'system_wide': system_wide, 'process_specific': process_specific}
     std_dev = {
         'system_wide': system_wide_std,
@@ -335,7 +335,7 @@ def draw_cache_miss(system_wide, process_specific, system_wide_std,
 def draw_ipc(system_wide, process_specific, system_wide_std,
              process_specific_std, fig_save_path):
     group_list = ['system_wide', 'process_specific']
-    x_ticks = ['aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
+    x_ticks = ['psync', 'aio', 'iou', 'iou-c', 'iou-s', ' spdk-fio']
     value = {'system_wide': system_wide, 'process_specific': process_specific}
     std_dev = {
         'system_wide': system_wide_std,
