@@ -1,5 +1,4 @@
 #! /bin/bash
-# FLAMEGRAPH=/mnt/sdb/zebin/stor_bench/iouring_tests/flame_graph.sh
 
 VMLINUX=
 SPDK_FIO_PLUGIN=
