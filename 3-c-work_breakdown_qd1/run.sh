@@ -4,10 +4,9 @@
 VMLINUX=
 SPDK_FIO_PLUGIN=
 SPDK_SETUP_PATH=
-FLAMEGRAPH=
 
-FIO_RUN_TIME=120
-FIO_RAMP_TIME=20
+FIO_RUN_TIME=30
+FIO_RAMP_TIME=5
 
 FIO_RES='./fio'
 PERF_RES='./perf_output'
@@ -45,9 +44,6 @@ do
 perf report --vmlinux $VMLINUX -n -m --stdio --full-source-path --source -s symbol -i $PERF_RES/${e}.perf.out >> $PERF_PARSED_LIST/perf_parsed_${e}.txt;
 
 perf report --vmlinux $VMLINUX -n -m --stdio --full-source-path --source -s symbol --call-graph=graph,0,caller,function,count -i $PERF_RES/${e}_g.perf.out >> $PERF_PARSED_GRAPH/perf_parsed_${e}_g.txt;
-
-$FLAMEGRAPH $PERF_RES/${e}_g.perf.out $FLAMEGRAPH_OUT/${e}.svg;
-
 done
 
 chcpu -e 1-9
