@@ -16,7 +16,12 @@ cd fio
 make
 ```
 
+NOTE: Please add fio to $PATH
+
 ### Install SPDK
+
+[SPDK setup](https://spdk.io/doc/getting_started.html)
+[fio spdk setup manual](https://github.com/spdk/spdk/blob/master/examples/nvme/fio_plugin/README.md)
 
 ```bash
 git clone https://github.com/spdk/spdk.git
@@ -38,7 +43,13 @@ sudo scripts/setup.sh reset
 
 ```
 
-NOTE: Please add fio to $PATH
+Make sure there are huge pages on the node where SPDK will be run on. For example:
+
+```bash
+sudo HUGENODE="nodes_hp[0]=4096,nodes_hp[1]=4096" $SPDK/scripts/setup.sh
+```
+
+
 
 ### Prepare
 

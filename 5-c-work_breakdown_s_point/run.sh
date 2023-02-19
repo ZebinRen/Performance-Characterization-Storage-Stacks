@@ -16,8 +16,6 @@ FLAMEGRAPH_OUT='./flamegraph'
 
 declare -a engines=("aio" "iou" "iou_s" "iou_c")
 
-chcpu -d 1-9
-
 $SPDK_SETUP_PATH reset
 
 for e in "${engines[@]}"
@@ -48,5 +46,3 @@ perf report --vmlinux $VMLINUX -n -m --stdio --full-source-path --source -s symb
 $FLAMEGRAPH $PERF_RES/${e}_g.perf.out $FLAMEGRAPH_OUT/${e}.svg;
 
 done
-
-chcpu -e 1-9
