@@ -52,6 +52,7 @@ sudo ./run.sh
 
 * Set the 'SPDK_FIO_PLUGIN' and 'SPDK_SETUP_PATH' before run the script
 * Fill your own devices in the fio configurations file before running.
+* In fig 7 and fig 8, the script will automatically turn down the CPU 0 using chcpu. Replace it with your cpu id in socket 1, or delete them if there is only one NUMA node on your machine.
 
 ## Figure 2
 
@@ -125,7 +126,7 @@ python3 plot.py
 
 Before running the script:
 
-* Set the 'SPDK_SETUP_PATH' environment variable.
+* Set the 'SPDK_SETUP_PATH' and 'SPDK_FIO_PLUGIN' environment variable.
 * Disable the CPU core that are not in the same socket with the device
 
 Run the script and plot:
