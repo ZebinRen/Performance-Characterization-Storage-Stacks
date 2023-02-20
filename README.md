@@ -95,6 +95,10 @@ sudo ./run.sh
 python3 plot.py
 ```
 
+NOTE:
+
+The work breakdown of iou-s might not be parsed correctly by the script. The work breakdown needs to be calculated manually for the perf report.
+
 ### For spdk
 
 * Parse the perf file with srcline(set your vmlinux path):

@@ -1,11 +1,11 @@
 #! /bin/bash
 
-VMLINUX=/mnt/sdb/zebin/linux_build/linux_src_5_15_79_build/linux-5.15.79/vmlinux
-SPDK_FIO_PLUGIN='/mnt/sdb/zebin/local/spdk/build/fio/spdk_nvme'
-SPDK_SETUP_PATH='/mnt/sdb/zebin/local/spdk/scripts/setup.sh'      
+VMLINUX=
+SPDK_FIO_PLUGIN=
+SPDK_SETUP_PATH=   
 
-FIO_RUN_TIME=30
-FIO_RAMP_TIME=5
+FIO_RUN_TIME=120
+FIO_RAMP_TIME=20
 
 FIO_RES='./fio'
 PERF_RES='./perf_output'
@@ -13,7 +13,7 @@ PERF_PARSED_LIST='./perf_list'
 PERF_PARSED_GRAPH='./perf_graph'
 FLAMEGRAPH_OUT='./flamegraph'
 
-declare -a engines=("aio" "iou" "iou_s" "iou_c")
+declare -a engines=("psync" "aio" "iou" "iou_s" "iou_c")
 
 $SPDK_SETUP_PATH reset
 
@@ -34,7 +34,7 @@ perf record -g -e instructions -F 99 -o $PERF_RES/${e}_g.perf.out env FIO_RUN_TI
 
 $SPDK_SETUP_PATH reset;
 
-# parse
+# # parse
 
 for e in "${engines[@]}"
 do
