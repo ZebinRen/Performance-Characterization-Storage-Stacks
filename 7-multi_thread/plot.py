@@ -5,10 +5,32 @@ import fio
 import matplotlib.pyplot as plt
 
 
+def parse_spdk_perf(filename):
+    f = open(filename)
+    contents = f.readlines()
+    f.close()
+
+    contents.reverse()
+
+    last_line = ''
+    for l in contents:
+        if l != '\n':
+            last_line = l
+            break
+    data = l.split(' ')
+
+    data = [x for x in data if x != '']
+    iops = float(data[2])
+    latency = float(data[4])
+
+    return iops, latency
+
+
 def read_data(engines, num_processes, dir):
     ret = {}
     for e in engines:
         ret[e] = []
+    ret['spdk_perf'] = []
 
     global_rk = []
     jobs_rk = ['read:lat_ns:mean', 'read:iops', 'read:lat_ns:stddev']
@@ -27,14 +49,19 @@ def read_data(engines, num_processes, dir):
             iops = iops / 1000
             ret[e].append(iops)
 
+    for num_p in range(1, num_processes + 1):
+        cur_filename = 'spdk_perf_t_' + str(num_p) + '.txt'
+        cur_filename = os.path.join(dir, cur_filename)
+        cur_iops, cur_latency = parse_spdk_perf(cur_filename)
+        ret['spdk_perf'].append(cur_iops / 1000)
     return ret
 
 
 dir = 'results'
-engines = ['aio', 'iou', 'iou_s', 'iou_c', 'spdk_fio']
+engines = ['aio', 'iou', 'iou_s', 'iou_c', 'spdk_fio', 'spdk_perf']
 num_process = 20
 
-ret = read_data(engines, num_process, dir)
+ret = read_data(engines[:-1], num_process, dir)
 
 x_label = 'Engines'
 bar_width = 0.4
@@ -90,7 +117,8 @@ def draw_graph(
         'iou': 'iou',
         'iou_s': 'iou-s',
         'iou_c': 'iou-c',
-        'spdk_fio': 'spdk_fio'
+        'spdk_fio': 'spdk_fio',
+        'spdk_perf': 'spdk_perf'
     }
 
     for (index, group_name) in zip(range(len(group_list)), group_list):
