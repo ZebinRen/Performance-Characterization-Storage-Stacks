@@ -8,3 +8,5 @@ perf_output
 *pdf
 flamegraph
 fio
+*perf.out
+*/perf_graph/
