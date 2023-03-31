@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:01:45 2023
+
+
+ Performance counter stats for 'system wide':
+
+          18314597      branch-misses             #    0.34% of all branches        
+        5373992311      branches                                                    
+
+       5.003999242 seconds time elapsed
+

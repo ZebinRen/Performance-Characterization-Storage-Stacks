@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:30:15 2023
+
+
+ Performance counter stats for process id '47474':
+
+       12006497787      cycles                                                      
+       31864393213      instructions              #    2.65  insn per cycle         
+
+       5.001006505 seconds time elapsed
+

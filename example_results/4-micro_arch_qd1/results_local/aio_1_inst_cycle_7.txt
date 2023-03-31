@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:16:26 2023
+
+
+ Performance counter stats for process id '46891':
+
+        3828035857      cycles                                                      
+        4520998446      instructions              #    1.18  insn per cycle         
+
+       5.001006808 seconds time elapsed
+

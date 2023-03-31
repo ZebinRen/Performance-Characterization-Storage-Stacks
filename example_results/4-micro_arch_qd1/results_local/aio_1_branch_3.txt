@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:15:15 2023
+
+
+ Performance counter stats for process id '46891':
+
+           9458233      branch-misses             #    1.04% of all branches        
+         906617914      branches                                                    
+
+       5.000996913 seconds time elapsed
+

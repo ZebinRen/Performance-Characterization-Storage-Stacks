@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:37:14 2023
+
+
+ Performance counter stats for process id '48008':
+
+             17990      cache-misses              #    2.483 % of all cache refs    
+            724595      cache-references                                            
+
+       5.000993665 seconds time elapsed
+

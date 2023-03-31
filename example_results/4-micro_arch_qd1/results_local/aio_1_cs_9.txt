@@ -1,0 +1,9 @@
+# started on Fri Feb 10 18:17:23 2023
+
+
+ Performance counter stats for process id '46891':
+
+            391299      cs                                                          
+
+       5.000970561 seconds time elapsed
+

@@ -1,0 +1,9 @@
+# started on Fri Feb 10 18:20:30 2023
+
+
+ Performance counter stats for process id '47089':
+
+            383022      cs                                                          
+
+       5.000967968 seconds time elapsed
+

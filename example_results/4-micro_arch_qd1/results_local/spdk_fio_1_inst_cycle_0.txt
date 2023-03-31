@@ -1,0 +1,10 @@
+# started on Fri Feb 10 18:34:45 2023
+
+
+ Performance counter stats for process id '48008':
+
+       12006186664      cycles                                                      
+       39547214575      instructions              #    3.29  insn per cycle         
+
+       5.001037985 seconds time elapsed
+

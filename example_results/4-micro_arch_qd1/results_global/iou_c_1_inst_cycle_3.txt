@@ -1,0 +1,10 @@
+# started on Fri Feb 10 17:59:31 2023
+
+
+ Performance counter stats for 'system wide':
+
+       12065356406      cycles                                                      
+       30947411623      instructions              #    2.56  insn per cycle         
+
+       5.001548739 seconds time elapsed
+
