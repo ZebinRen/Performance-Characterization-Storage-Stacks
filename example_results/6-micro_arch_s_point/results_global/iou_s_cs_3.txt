@@ -1,0 +1,9 @@
+# started on Sat Feb 11 15:55:27 2023
+
+
+ Performance counter stats for 'system wide':
+
+              2118      cs                                                          
+
+       5.004035302 seconds time elapsed
+

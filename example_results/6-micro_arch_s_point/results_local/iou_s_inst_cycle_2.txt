@@ -1,0 +1,10 @@
+# started on Sat Feb 11 16:00:01 2023
+
+
+ Performance counter stats for process id '83487':
+
+       12010448435      cycles                                                      
+       16986192468      instructions              #    1.41  insn per cycle         
+
+       5.001008551 seconds time elapsed
+

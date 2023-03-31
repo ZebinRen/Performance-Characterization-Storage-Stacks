@@ -1,0 +1,10 @@
+# started on Sat Feb 11 13:59:38 2023
+
+
+ Performance counter stats for process id '75415':
+
+       12006078346      cycles                                                      
+       16708467853      instructions              #    1.39  insn per cycle         
+
+       5.001014499 seconds time elapsed
+

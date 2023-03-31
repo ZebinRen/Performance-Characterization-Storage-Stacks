@@ -1,0 +1,10 @@
+# started on Sat Feb 11 13:56:38 2023
+
+
+ Performance counter stats for process id '75415':
+
+             23911      cache-misses              #    0.461 % of all cache refs    
+           5190991      cache-references                                            
+
+       5.001039325 seconds time elapsed
+

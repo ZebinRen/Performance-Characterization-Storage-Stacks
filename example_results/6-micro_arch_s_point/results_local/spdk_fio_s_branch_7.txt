@@ -1,0 +1,10 @@
+# started on Sat Feb 11 13:59:07 2023
+
+
+ Performance counter stats for process id '75415':
+
+           6700392      branch-misses             #    0.20% of all branches        
+        3404171016      branches                                                    
+
+       5.001011996 seconds time elapsed
+
