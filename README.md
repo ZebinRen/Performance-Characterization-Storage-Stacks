@@ -54,9 +54,25 @@ sudo HUGENODE="nodes_hp[0]=4096,nodes_hp[1]=4096" $SPDK/scripts/setup.sh
 ### Prepare
 
 Fully write the devices 10 times before the experiment
+
 ```bash
 cd write_device
 sudo ./run.sh
+```
+
+Setup environment variables:
+source ./setup_env.sh
+
+Add the following line to .bashrc
+
+```bashalias
+sudo='sudo -E env PATH=$PATH'
+```
+
+or run every script with
+
+```bash
+sudo -E env PATH=$PATH
 ```
 
 ### NOTE
@@ -70,7 +86,10 @@ sudo ./run.sh
 Before running the script:
 
 * Set the 'SPDK_SETUP_PATH' environment variable.
-* Disable the CPU core that are not in the same socket with the device
+* Change 'PINNED_CPU' and 'PINNED_CPU_POLL'
+* Change 'DEVICES' and '--filename' in line 59
+
+The following 
 
 Run the script and plot:
 
