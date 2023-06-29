@@ -1,0 +1,27 @@
+
+./run.sh: 7: [: ==: unexpected operator
+./run.sh: 12: [: unexpected operator
+Execute: chcpu -d 0-19
+chcpu: CPU 0 is not hot pluggable
+CPU 1 disabled
+CPU 2 disabled
+CPU 3 disabled
+CPU 4 disabled
+CPU 5 disabled
+CPU 6 disabled
+CPU 7 disabled
+CPU 8 disabled
+CPU 9 disabled
+CPU 10 disabled
+CPU 11 disabled
+CPU 12 disabled
+CPU 13 disabled
+CPU 14 disabled
+CPU 15 disabled
+CPU 16 disabled
+CPU 17 disabled
+CPU 18 disabled
+CPU 19 disabled
+Execute: chcpu -e 19
+CPU 19 enabled
+Execute:  reset;
