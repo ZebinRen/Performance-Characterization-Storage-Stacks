@@ -1,0 +1,148 @@
+Execute: /home/zebin/local/spdk/scripts/setup.sh reset;
+0000:65:00.0 (144d a80a): Already using the nvme driver
+0000:68:00.0 (144d a80a): Already using the nvme driver
+0000:67:00.0 (144d a80a): Already using the nvme driver
+0000:66:00.0 (144d a80a): Already using the nvme driver
+0000:19:00.0 (144d a80a): Already using the nvme driver
+0000:04:00.0 (144d a80a): Already using the nvme driver
+0000:1a:00.0 (144d a80a): Already using the nvme driver
+0000:17:00.0 (144d a80a): Already using the nvme driver
+0000:18:00.0 (144d a80a): Already using the nvme driver
+0000:05:00.0 (144d a80a): Already using the nvme driver
+0000:00:04.7 (8086 2021): Already using the ioatdma driver
+0000:00:04.6 (8086 2021): Already using the ioatdma driver
+0000:00:04.5 (8086 2021): Already using the ioatdma driver
+0000:00:04.4 (8086 2021): Already using the ioatdma driver
+0000:00:04.3 (8086 2021): Already using the ioatdma driver
+0000:00:04.2 (8086 2021): Already using the ioatdma driver
+0000:00:04.1 (8086 2021): Already using the ioatdma driver
+0000:00:04.0 (8086 2021): Already using the ioatdma driver
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_1.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_1.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_1.txt
+Execute: chcpu -e 8
+CPU 8 is already enabled
+Execute: fio --iodepth=1 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_1.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_2.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_2.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_2.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=2 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_2.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_4.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_4.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_4.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=4 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_4.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_8.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_8.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_8.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=8 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_8.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_16.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_16.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_16.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=16 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_16.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_32.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_32.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_32.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=32 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_32.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_64.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_64.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_64.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=64 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_64.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute: fio --ioengine=libaio --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/aio_qd_128.txt
+Execute: fio --ioengine=io_uring --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_qd_128.txt
+Execute: fio --ioengine=io_uring --hipri --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_c_qd_128.txt
+Execute: chcpu -e 8
+CPU 8 enabled
+Execute: fio --iodepth=128 --ioengine=io_uring --sqthread_poll=1 --sqthread_poll_cpu=8 --registerfiles=1 --fixedbufs=1 --time_based=1 --ramp_time=5s --runtime=5s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --filename=/dev/nvme0n1 --name=1 -o results/iou_s_qd_128.txt
+Execute: chcpu -d 8
+CPU 8 disabled
+Execute:  /home/zebin/local/spdk/scripts/setup.sh
+0000:00:04.7 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.6 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.5 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.4 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.3 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.2 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.1 (8086 2021): ioatdma -> uio_pci_generic
+0000:00:04.0 (8086 2021): ioatdma -> uio_pci_generic
+0000:68:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:04:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:19:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:66:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:05:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:18:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:17:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:65:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:67:00.0 (144d a80a): nvme -> uio_pci_generic
+0000:1a:00.0 (144d a80a): nvme -> uio_pci_generic
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=1 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_1.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=2 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_2.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=4 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_4.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=8 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_8.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=16 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_16.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=32 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_32.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=64 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_64.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: LD_PRELOAD=/home/zebin/local/spdk/build/fio/spdk_nvme fio --iodepth=128 --filename=trtype=PCIe traddr=0000.65.00.0 ns=1 --time_based=1 --ioengine=spdk --ramp_time=5s --runtime=5s --size=100% --bs=4kb --thread=1 --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --cpus_allowed=9 --output-format=json --name=1 -o results/spdk_fio_qd_128.txt
+TELEMETRY: No legacy callbacks, legacy socket not created
+Execute: /home/zebin/local/spdk/scripts/setup.sh reset
+0000:65:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:68:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:67:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:66:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:19:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:04:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:1a:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:17:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:18:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:05:00.0 (144d a80a): uio_pci_generic -> nvme
+0000:00:04.7 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.6 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.5 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.4 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.3 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.2 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.1 (8086 2021): uio_pci_generic -> ioatdma
+0000:00:04.0 (8086 2021): uio_pci_generic -> ioatdma
+Execute: chcpu -e 0-9
+chcpu: CPU 0 is not hot pluggable
+CPU 1 is already enabled
+CPU 2 is already enabled
+CPU 3 is already enabled
+CPU 4 is already enabled
+CPU 5 is already enabled
+CPU 6 is already enabled
+CPU 7 is already enabled
+CPU 8 enabled
+CPU 9 is already enabled
