@@ -35,6 +35,22 @@ def read_data(engines, num_processes, dir):
     global_rk = []
     jobs_rk = ['read:lat_ns:mean', 'read:iops', 'read:lat_ns:stddev']
     for e in engines:
+        if e == 'iou_s':
+            for num_p in range(1, int(num_processes / 2) + 1):
+                # qd = 1
+                cur_filename = e + '_t_' + str(num_p) + '.txt'
+                cur_filename = os.path.join(dir, cur_filename)
+
+                _, j_res = fio.parse_experiment(cur_filename, global_rk,
+                                                jobs_rk)
+                all_iops = []
+                for single_job_res in j_res:
+                    all_iops.append(single_job_res['read:iops'])
+
+                iops = np.sum(all_iops)
+                iops = iops / 1000
+                ret[e].append(iops)
+            continue
         for num_p in range(1, num_processes + 1):
             # qd = 1
             cur_filename = e + '_t_' + str(num_p) + '.txt'
@@ -49,11 +65,11 @@ def read_data(engines, num_processes, dir):
             iops = iops / 1000
             ret[e].append(iops)
 
-    for num_p in range(1, num_processes + 1):
-        cur_filename = 'spdk_perf_t_' + str(num_p) + '.txt'
-        cur_filename = os.path.join(dir, cur_filename)
-        cur_iops, cur_latency = parse_spdk_perf(cur_filename)
-        ret['spdk_perf'].append(cur_iops / 1000)
+    # for num_p in range(1, num_processes + 1):
+    #     cur_filename = 'spdk_perf_t_' + str(num_p) + '.txt'
+    #     cur_filename = os.path.join(dir, cur_filename)
+    #     cur_iops, cur_latency = parse_spdk_perf(cur_filename)
+    #     ret['spdk_perf'].append(cur_iops / 1000)
     return ret
 
 
@@ -62,6 +78,7 @@ engines = ['aio', 'iou', 'iou_s', 'iou_c', 'spdk_fio', 'spdk_perf']
 num_process = 20
 
 ret = read_data(engines[:-1], num_process, dir)
+print(ret)
 
 x_label = 'Engines'
 bar_width = 0.4
@@ -147,4 +164,4 @@ def draw_graph(
     plt.savefig(fig_save_path, bbox_inches='tight')
 
 
-draw_graph(ret, engines, 'inc_process.pdf')
+draw_graph(ret, engines[:-1], 'inc_process.pdf')
