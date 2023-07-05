@@ -83,7 +83,7 @@ done
 
 declare -a num_threads=("1" "2" "3" "4" "5")
 
-FIO_OPTIONS_IOUS="--time_based=1 --ramp_time=${FIO_RAMP_TIME}s --runtime=${FIO_RUN_TIME}s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --iodepth=1 --output-format=json --filename=${DEVICES}"
+FIO_OPTIONS_IOUS="--time_based=1 --ramp_time=${FIO_RAMP_TIME}s --runtime=${FIO_RUN_TIME}s --size=100% --bs=4kb --norandommap=1 --group_reporting=1 --direct=1 --rw=randread --allow_file_create=0 --iodepth=128 --output-format=json --filename=${DEVICES}"
 
 echo "Execute: chcpu -d 0-${MAX_CPU_ID}"
 chcpu -d 0-${MAX_CPU_ID}
