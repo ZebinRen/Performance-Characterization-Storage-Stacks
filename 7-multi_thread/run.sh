@@ -94,8 +94,8 @@ do
     chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}+1))
     echo "Execute: chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}))"
     chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}))
-    echo "Execute: fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --name=1 --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt"
-    fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --name=1 --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt
+    echo "Execute: fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt"
+    fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt
 done
 
 declare -a num_threads=("6" "7" "8" "9" "10")
@@ -106,8 +106,8 @@ do
     chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}+1))
     echo "Execute: chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}))"
     chcpu -e $(((${MAX_CPU_ID}+1)-2*${t}))
-    echo "Execute: fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --name=1 --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt"
-    fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --name=1 --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt
+    echo "Execute: fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt"
+    fio --ioengine=io_uring --sqthread_poll=1 --registerfiles=1 --fixedbufs=1 ${FIO_OPTIONS} --cpus_allowed=$(((${MAX_CPU_ID}+1)-${t}))-${MAX_CPU_ID} --sqthread_poll_cpu=$(((${MAX_CPU_ID}+1)-2*${t}))-$(((${MAX_CPU_ID}+1)-${t}-1)) --numjobs=${t} -o $RESULTS/iou_s_t_${t}.txt
 done
 
 echo "Execute: chcpu -d 0-${MAX_CPU_ID}"
